@@ -15,7 +15,7 @@ public class MicroBabelLibrary {
         int nextChar;
         char[] newBook = new char[bookSize];
         String newBookStr;
-        String[] searchStrings = {"я"};
+        String[] searchStrings = {"бобы"};
         boolean run = true;
         long runCount = 1;
         Random random = new Random();
@@ -28,7 +28,7 @@ public class MicroBabelLibrary {
                 newBook[i] = alphabet[nextChar];
             }
             newBookStr = new String(newBook);
-            System.out.println(newBook);
+            System.out.println("Шаг " + runCount + ": " + newBookStr);
             for (int wordIndex = 0; wordIndex < searchStringsLength; wordIndex++) {
                 for (int x = 0; x <= bookSize - searchStrings[wordIndex].length(); x++)
                     //if (searchString.compareTo(new String(newBook)) == 0){
