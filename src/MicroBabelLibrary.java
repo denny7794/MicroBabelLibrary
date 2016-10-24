@@ -17,7 +17,7 @@ public class MicroBabelLibrary {
         int nextChar;
         char[] newBook = new char[bookSize];
         String newBookStr;
-        String[] searchStrings = {"б"};
+        String[] searchStrings = {"боб"};
         boolean run = true;
         long runCount = 1;
         Random random = new Random();
@@ -37,7 +37,7 @@ public class MicroBabelLibrary {
                     //if (searchString.compareTo(new String(newBook)) == 0){
                     if (newBookStr.regionMatches(x, searchStrings[wordIndex], 0, searchStrings[wordIndex].length())) {
                         timeCount = System.currentTimeMillis() - timeCount;
-                        TimeCalc timeCalc = new TimeCalc(277041341);
+                        TimeCalc timeCalc = new TimeCalc(timeCount);
                         System.out.println("Нашел слово \"" + searchStrings[wordIndex] + "\" на шаге " + runCount + " за " + timeCount + " миллисекунд. Расшифровка: " + timeCalc.getTime());
                         run = false;
                     }
@@ -59,11 +59,6 @@ public class MicroBabelLibrary {
             int allHours = (int)(allMins/60);
             int allDays = allHours/24;
 
-            /*millis = (int)(t - allSecs*1000);
-            hours = (int)(allSecs/60/60);
-            //mins = (int)(allSecs)/60;
-            mins = (int)(allMins - hours*60);
-            //secs = (int)(allSecs- (mins*60));*/
             days = allDays;
             hours = (int)(allHours - allDays*24);
             mins = (int)(allMins - allHours*60);
