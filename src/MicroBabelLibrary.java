@@ -22,6 +22,7 @@ public class MicroBabelLibrary {
 
         int searchStringsLength = searchStrings.length;
 
+        long timeCount = System.currentTimeMillis();
         while (run) {
             for (int i = 0; i < bookSize; i++) {
                 nextChar = random.nextInt(alphabetLength);
@@ -33,7 +34,8 @@ public class MicroBabelLibrary {
                 for (int x = 0; x <= bookSize - searchStrings[wordIndex].length(); x++)
                     //if (searchString.compareTo(new String(newBook)) == 0){
                     if (newBookStr.regionMatches(x, searchStrings[wordIndex], 0, searchStrings[wordIndex].length())) {
-                        System.out.println("Нашел слово \"" + searchStrings[wordIndex] + "\" на шаге " + runCount);
+                        timeCount = System.currentTimeMillis() - timeCount;
+                        System.out.println("Нашел слово \"" + searchStrings[wordIndex] + "\" на шаге " + runCount + " за " + timeCount);
                         run = false;
                     }
             }
