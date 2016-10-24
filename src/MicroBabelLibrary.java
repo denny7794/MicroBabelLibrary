@@ -8,7 +8,9 @@ import java.util.*;
 
 public class MicroBabelLibrary {
     public static void main(String[] args) {
-
+        new MicroBabelLibrary().go();
+    }
+    public void go() {
         char[] alphabet = {'а','б','в','г','д','е','ё','ж','з','и','й','к','л','м','н','о','п','р','с','т','у','ф','х','ц','ч','ш','щ','ь','ы','ъ','э','ю','я',' '};
         int alphabetLength = alphabet.length;
         int bookSize = 5;
@@ -35,11 +37,31 @@ public class MicroBabelLibrary {
                     //if (searchString.compareTo(new String(newBook)) == 0){
                     if (newBookStr.regionMatches(x, searchStrings[wordIndex], 0, searchStrings[wordIndex].length())) {
                         timeCount = System.currentTimeMillis() - timeCount;
-                        System.out.println("Нашел слово \"" + searchStrings[wordIndex] + "\" на шаге " + runCount + " за " + timeCount);
+                        TimeCalc timeCalc = new TimeCalc(timeCount);
+                        System.out.println("Нашел слово \"" + searchStrings[wordIndex] + "\" на шаге " + runCount + " за " + timeCount + " миллисекунд. Расшифровка: " + timeCalc.getTime());
                         run = false;
                     }
             }
             runCount++;
         }
     }
+
+    class TimeCalc {
+        public int millis;
+        public int secs;
+        public int mins;
+        public int hours;
+        public int days;
+
+        public TimeCalc(long t) {
+            millis = (int)(t - t/1000*1000);
+        }
+
+        public String getTime(){
+            String resultTime;
+            resultTime = this.millis + " миллисекунд";
+            return resultTime;
+        }
+    }
+
 }
