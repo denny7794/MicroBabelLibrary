@@ -37,7 +37,7 @@ public class MicroBabelLibrary {
                     //if (searchString.compareTo(new String(newBook)) == 0){
                     if (newBookStr.regionMatches(x, searchStrings[wordIndex], 0, searchStrings[wordIndex].length())) {
                         timeCount = System.currentTimeMillis() - timeCount;
-                        TimeCalc timeCalc = new TimeCalc(278000);
+                        TimeCalc timeCalc = new TimeCalc(277041341);
                         System.out.println("Нашел слово \"" + searchStrings[wordIndex] + "\" на шаге " + runCount + " за " + timeCount + " миллисекунд. Расшифровка: " + timeCalc.getTime());
                         run = false;
                     }
@@ -54,15 +54,26 @@ public class MicroBabelLibrary {
         public int days;
 
         public TimeCalc(long t) {
-            int allSecs = (int)(t/1000);
+            long allSecs = t/1000;
+            long allMins = allSecs/60;
+            int allHours = (int)(allMins/60);
+            int allDays = allHours/24;
+
+            /*millis = (int)(t - allSecs*1000);
+            hours = (int)(allSecs/60/60);
+            //mins = (int)(allSecs)/60;
+            mins = (int)(allMins - hours*60);
+            //secs = (int)(allSecs- (mins*60));*/
+            days = allDays;
+            hours = (int)(allHours - allDays*24);
+            mins = (int)(allMins - allHours*60);
+            secs = (int)(allSecs - allMins*60);
             millis = (int)(t - allSecs*1000);
-            mins = (int)(allSecs)/60;
-            secs = (int)(allSecs- (mins*60));
         }
 
         public String getTime(){
             String resultTime;
-            resultTime = this.mins + " минут " +this.secs + " секунд " + this.millis + " миллисекунд";
+            resultTime = this.days + "д " + this.hours + "ч " + this.mins + "м " +this.secs + "с " + this.millis + "мс";
             return resultTime;
         }
     }
