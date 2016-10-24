@@ -55,11 +55,12 @@ public class MicroBabelLibrary {
 
         public TimeCalc(long t) {
             millis = (int)(t - t/1000*1000);
+            secs = (int)((t - millis)/1000);
         }
 
         public String getTime(){
             String resultTime;
-            resultTime = this.millis + " миллисекунд";
+            resultTime = this.secs + " секунд " + this.millis + " миллисекунд";
             return resultTime;
         }
     }
